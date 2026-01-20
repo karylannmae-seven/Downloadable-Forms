@@ -1,124 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Division Memorandum</title>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <!-- DataTables CSS & JS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
 <style>
-  body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 20px; background-color: #f4f7f6; }
-  .container { max-width: 900px; margin: auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-  
-  h2 { color: #2e7d32; border-bottom: 2px solid #2e7d32; padding-bottom: 10px; margin-top: 0; }
-  
-  /* Simple Search Bar */
-  #formSearch { 
-    width: 100%; 
-    padding: 14px; 
-    margin-bottom: 25px; 
-    border: 2px solid #eee; 
-    border-radius: 6px; 
-    box-sizing: border-box; 
-    font-size: 16px; 
-    outline: none;
-    transition: border-color 0.3s;
+  body {
+    font-family: Arial, sans-serif;
+    /* Reduced padding to expand usable space on left/right */
+    padding: 10px 5px; 
+    margin: 0;
   }
-  #formSearch:focus { border-color: #2e7d32; }
 
-  /* Table Styling */
-  table { width: 100%; border-collapse: collapse; }
-  th { background: #2e7d32; color: white; text-align: left; padding: 15px; font-size: 14px; text-transform: uppercase; }
-  td { padding: 15px; border-bottom: 1px solid #eee; vertical-align: middle; }
-  tr:nth-child(even) { background-color: #fcfcfc; }
-  tr:hover { background-color: #f1f8e9; } /* Subtle highlight on hover */
-
-  .form-info { display: flex; flex-direction: column; }
-  .form-name { font-weight: bold; color: #333; font-size: 15px; }
-  .form-desc { font-size: 12px; color: #666; margin-top: 3px; }
-
-  /* Action Button */
-  .download-btn {
-    background-color: #2097c3;
-    color: white;
-    padding: 10px 18px;
-    text-decoration: none;
-    border-radius: 4px;
+  h2 {
     font-weight: bold;
-    display: inline-block;
-    font-size: 13px;
-    text-align: center;
-    min-width: 100px;
-    transition: background 0.3s;
+    padding-left: 10px;
   }
-  .download-btn:hover { background-color: #1a7fa5; }
+
+  /* Force the table to take up the full width of the screen */
+  #memoTable {
+    width: 100% !important;
+    margin: 0 auto;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+
+  .pdf-icon {
+    width: 24px;
+    vertical-align: middle;
+  }
+
+  .zoom-icon {
+    width: 20px;
+    vertical-align: middle;
+  }
+
+  /* Styling for DM links with your requested color */
+  .dm-link {
+    color: #2097c3; 
+    text-decoration: none;
+  }
+
+  .dm-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Fix for the blue vertical line between icons */
+  #memoTable td a {
+    text-decoration: none !important;
+    display: inline-block;
+  }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <h2>Downloadable Forms</h2>
-  
-  <input type="text" id="formSearch" onkeyup="searchTable()" placeholder="🔍 Type to search (e.g., PDS, Work, Guide)...">
+  <h2>📄 SCHOOL MEMORANDUM</h2>
 
-  <table id="formsTable">
+  <table id="memoTable" class="display">
     <thead>
       <tr>
-        <th>Form Details</th>
-        <th style="width: 120px; text-align: center;">Action</th>
+        <th>SM No.</th>
+        <th>Title</th>
+        <th>Date Posted</th>
+        <th>Posted By</th>
+        <th>Download</th>
       </tr>
     </thead>
     <tbody>
       <tr>
+        <td><a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2009%2D017%2C%20S%2E%202024%2Epdf&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1" class="dm-link">SM 07-017 s. 2024</a></td>
+        <td>Shifting to Modular Distance Learning and Distribution of Learning Activity Sheets (LAS)/ Modules to Learners</td>
+        <td data-order="2024-09-26">September 26, 2024</td>
+        <td>School Principal's Office</td>
         <td>
-          <div class="form-info">
-            <span class="form-name">Personal Data Sheet (PDS)</span>
-            <span class="form-desc">CS Form No. 212 Revised 2025 (Excel)</span>
-          </div>
-        </td>
-        <td style="text-align: center;">
-          <a href="https://depedph-my.sharepoint.com/:x:/g/personal/karylannmae_convicto_deped_gov_ph/IQAFBgeTNvk3Qrr2xwD3fZXQATlKVw2iXKHMmXcQd0nXlvw?download=1" class="download-btn">Download</a>
+           <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2009%2D017%2C%20S%2E%202024%2Epdf&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1" target="_blank"><img src="https://img.icons8.com/fluency/48/pdf.png" class="pdf-icon" alt="PDF"></a>
+  <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2009%2D017%2C%20S%2E%202024%2Epdf&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1"><img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" class="zoom-icon" alt="Zoom"></a>
         </td>
       </tr>
-
       <tr>
+        <td><a href="#" class="dm-link">SM 07-016 s. 2024</a></td>
+        <td>Use of Document Routing Slip for All Documents Relating to Procurement and Liquidation of any Funding Source</td>
+        <td data-order="2024-09-17">September 17, 2024</td>
+        <td>School Principal's Office</td>
         <td>
-          <div class="form-info">
-            <span class="form-name">Work Experience Sheet</span>
-            <span class="form-desc">CS Form No. 212 Attachment (Word)</span>
-          </div>
-        </td>
-        <td style="text-align: center;">
-          <a href="https://depedph-my.sharepoint.com/:w:/g/personal/karylannmae_convicto_deped_gov_ph/IQAxvi4s1uPoQZyrX_461hBpARjWQYVKxEOF1GWImkY8Llw?download=1" class="download-btn">Download</a>
+           <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2009%2D016%2C%20S%2E%202024%2Epdf&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1" target="_blank"><img src="https://img.icons8.com/fluency/48/pdf.png" class="pdf-icon" alt="PDF"></a>
+  <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2009%2D016%2C%20S%2E%202024%2Epdf&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1"><img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" class="zoom-icon" alt="Zoom"></a>
         </td>
       </tr>
-
       <tr>
+        <td><a href="#" class="dm-link">SM 07-015 s. 2024</a></td>
+        <td>Schedule of ALIVE Classes</td>
+        <td data-order="2024-09-16">September 16, 2024</td>
+        <td>School Principal's Office</td>
         <td>
-          <div class="form-info">
-            <span class="form-name">Guide to Filling Up the PDS</span>
-            <span class="form-desc">Instructional Attachment (PDF)</span>
-          </div>
-        </td>
-        <td style="text-align: center;">
-          <a href="https://depedph-my.sharepoint.com/:b:/g/personal/karylannmae_convicto_deped_gov_ph/IQA3NwjbHTdAS5c9ctwKZnqpAUCE6NvtPdSh5BIizfjsuiQ?download=1" class="download-btn">Download</a>
+           <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2009%2D015%2C%20S%2E%202024%2Epdf&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1" target="_blank"><img src="https://img.icons8.com/fluency/48/pdf.png" class="pdf-icon" alt="PDF"></a>
+  <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2009%2D015%2C%20S%2E%202024%2Epdf&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1"><img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" class="zoom-icon" alt="Zoom"></a>
         </td>
       </tr>
+      <tr>
+        <td><a href="#" class="dm-link">SM 07-014 s. 2024</a></td>
+        <td>Composition of the School-Based Feeding Program (SBFP) School Core Group</td>
+        <td data-order="2024-09-09">September 9, 2024</td>
+        <td>School Principal's Office</td>
+        <td>
+           <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2009%2D014%2C%20S%2E%202024%2Epdf&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1" target="_blank"><img src="https://img.icons8.com/fluency/48/pdf.png" class="pdf-icon" alt="PDF"></a>
+  <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2009%2D014%2C%20S%2E%202024%2Epdf&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1"><img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" class="zoom-icon" alt="Zoom"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#" class="dm-link">SM 07-013 s. 2024</a></td>
+        <td>School Ranking for Various Vacant Teaching Positions</td>
+        <td data-order="2024-09-02">September 2, 2024</td>
+        <td>School Principal's Office</td>
+        <td>
+           <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2009%2D013%2C%20S%2E%202024%2Epdf&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1" target="_blank"><img src="https://img.icons8.com/fluency/48/pdf.png" class="pdf-icon" alt="PDF"></a>
+  <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2009%2D013%2C%20S%2E%202024%2Epdf&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1"><img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" class="zoom-icon" alt="Zoom"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#" class="dm-link">SM 07-012 s. 2024</a></td>
+        <td>Monthly Recognition for Cleanest and Orderly Classrooms</td>
+        <td data-order="2024-08-27">August 27, 2024</td>
+        <td>School Principal's Office</td>
+        <td>
+           <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2008%2D012%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1" target="_blank"><img src="https://img.icons8.com/fluency/48/pdf.png" class="pdf-icon" alt="PDF"></a>
+  <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2008%2D012%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1"><img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" class="zoom-icon" alt="Zoom"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#" class="dm-link">SM 07-011 s. 2024</a></td>
+        <td>Submission and Updating of 201 Files</td>
+        <td data-order="2024-08-27">August 27, 2024</td>
+        <td>School Principal's Office</td>
+        <td>
+           <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2008%2D011%2C%20S%2E%202024%2Epdf&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1" target="_blank"><img src="https://img.icons8.com/fluency/48/pdf.png" class="pdf-icon" alt="PDF"></a>
+  <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2008%2D011%2C%20S%2E%202024%2Epdf&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1"><img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" class="zoom-icon" alt="Zoom"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#" class="dm-link">SM 07-010 s. 2024</a></td>
+        <td>Conduct of Collaborative Expertise and Performance Planning</td>
+        <td data-order="2024-08-13">August 13, 2024</td>
+        <td>School Principal's Office</td>
+        <td>
+           <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2008%2D010%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1" target="_blank"><img src="https://img.icons8.com/fluency/48/pdf.png" class="pdf-icon" alt="PDF"></a>
+  <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2008%2D010%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1"><img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" class="zoom-icon" alt="Zoom"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#" class="dm-link">SM 07-009 s. 2024</a></td>
+        <td>Suspension of Effectivity of School Memorandum No. 08-007 s. 2024</td>
+        <td data-order="2024-08-12">August 12, 2024</td>
+        <td>School Principal's Office</td>
+        <td>
+           <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2008%2D009%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1" target="_blank"><img src="https://img.icons8.com/fluency/48/pdf.png" class="pdf-icon" alt="PDF"></a>
+  <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2008%2D009%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1"><img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" class="zoom-icon" alt="Zoom"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#" class="dm-link">SM 07-007 s. 2024</a></td>
+        <td>Composition of the Pupil's Disaster Risk Reduction Managament (PDRRM) Team</td>
+        <td data-order="2024-08-01">August 1, 2024</td>
+        <td>School Principal's Office</td>
+        <td>
+           <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2008%2D007%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1" target="_blank"><img src="https://img.icons8.com/fluency/48/pdf.png" class="pdf-icon" alt="PDF"></a>
+  <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2008%2D007%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1"><img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" class="zoom-icon" alt="Zoom"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#" class="dm-link">SM 07-006 s. 2024</a></td>
+        <td>Composition of the Pupil's Disaster Risk Reduction Managament (PDRRM) Team</td>
+        <td data-order="2024-07-26">July 26, 2024</td>
+        <td>School Principal's Office</td>
+        <td>
+           <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2007%2D006%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1" target="_blank"><img src="https://img.icons8.com/fluency/48/pdf.png" class="pdf-icon" alt="PDF"></a>
+  <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2007%2D006%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1"><img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" class="zoom-icon" alt="Zoom"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#" class="dm-link">SM 07-005 s. 2024</a></td>
+        <td>Composition of the School Disaster Risk Reduction Managament (SDRRM) Team</td>
+        <td data-order="2024-07-26">July 26, 2024</td>
+        <td>School Principal's Office</td>
+        <td>
+           <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2007%2D004%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1" target="_blank"><img src="https://img.icons8.com/fluency/48/pdf.png" class="pdf-icon" alt="PDF"></a>
+  <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2007%2D004%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1"><img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" class="zoom-icon" alt="Zoom"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#" class="dm-link">SM 07-004 s. 2024</a></td>
+        <td>2024 School Oplan Balik Eskwela Public Assistance Command Center (OBE-PACC)</td>
+        <td data-order="2024-07-26">July 26, 2024</td>
+        <td>School Principal's Office</td>
+        <td>
+           <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2007%2D004%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1" target="_blank"><img src="https://img.icons8.com/fluency/48/pdf.png" class="pdf-icon" alt="PDF"></a>
+  <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2007%2D004%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1"><img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" class="zoom-icon" alt="Zoom"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#" class="dm-link">SM 07-003 s. 2024</a></td>
+        <td>Reiteration on the No Collection Policy</td>
+        <td data-order="2024-07-16">July 16, 2024</td>
+        <td>School Principal's Office</td>
+        <td>
+           <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2007%2D003%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1" target="_blank"><img src="https://img.icons8.com/fluency/48/pdf.png" class="pdf-icon" alt="PDF"></a>
+  <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2007%2D003%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1"><img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" class="zoom-icon" alt="Zoom"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#" class="dm-link">SM 07-002 s. 2024</a></td>
+        <td>Special Designations</td>
+        <td data-order="2024-07-02">July 02, 2024</td>
+        <td>School Principal's Office</td>
+        <td>
+           <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2007%2D002%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1" target="_blank"><img src="https://img.icons8.com/fluency/48/pdf.png" class="pdf-icon" alt="PDF"></a>
+  <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2007%2D002%2C%20S%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1"><img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" class="zoom-icon" alt="Zoom"></a>
+        </td>
+      </tr>
+      <tr>
+        <td><a href="#" class="dm-link">SM 07-001 s. 2024</a></td>
+        <td>2024-2025 School Enrolment</td>
+        <td data-order="2024-07-02">July 02, 2024</td>
+        <td>School Principal's Office</td>
+        <td>
+           <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2007%2D001%2C%20s%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1" target="_blank"><img src="https://img.icons8.com/fluency/48/pdf.png" class="pdf-icon" alt="PDF"></a>
+  <a href="https://depedph-my.sharepoint.com/personal/karylannmae_convicto_deped_gov_ph/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum%2FSM%2007%2D001%2C%20s%2E%202024%2Ejpg&parent=%2Fpersonal%2Fkarylannmae%5Fconvicto%5Fdeped%5Fgov%5Fph%2FDocuments%2FDCES%20Admin%2FSchool%20Issuances%2FSchool%20Memorandum&ga=1"><img src="https://img.icons8.com/ios-glyphs/30/search--v1.png" class="zoom-icon" alt="Zoom"></a>
+        </td>
+      </tr>
+      <!-- Add more rows as needed -->
     </tbody>
   </table>
-</div>
 
-<script>
-function searchTable() {
-  var input = document.getElementById("formSearch").value.toUpperCase();
-  var tr = document.getElementById("formsTable").getElementsByTagName("tr");
-  
-  for (var i = 1; i < tr.length; i++) {
-    var txtValue = tr[i].textContent || tr[i].innerText;
-    if (txtValue.toUpperCase().indexOf(input) > -1) {
-      tr[i].style.display = "";
-    } else {
-      tr[i].style.display = "none";
-    }
-  }
-}
+ <script>
+$(document).ready(function () {
+  $('#memoTable').DataTable({
+    order: [[2, 'desc']], 
+    orderClasses: false, // Removes the grey shade from the Date column
+    autoWidth: false     // Allows the table to stretch to 100% width
+  });
+});
 </script>
 
 </body>
